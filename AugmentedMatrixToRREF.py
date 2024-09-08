@@ -21,7 +21,9 @@ def is_number(s):
 print("Hello, getting matrix data...")
 with open("matrix.txt", "r") as f:
     for line in f:
-        row_string = line.rstrip('\n').split(' ')
+        if (not line.strip()):
+            continue
+        row_string = list(filter(lambda x: x.strip(), line.rstrip('\n').split(' ')))
         row = []
         for i in row_string:
             try:
